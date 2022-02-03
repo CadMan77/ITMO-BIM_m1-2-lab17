@@ -31,14 +31,15 @@ namespace ITMO_BIM_m1_2_lab17
                 new FrameworkPropertyMetadata(Colors.Black, new PropertyChangedCallback(OnColorChanged)));
             RedProperty = DependencyProperty.Register("Red", typeof(byte), typeof(ColorPicker),
                 new FrameworkPropertyMetadata(new PropertyChangedCallback(OnColorRGBChanged)));
-            RedProperty = DependencyProperty.Register("Green", typeof(byte), typeof(ColorPicker),
+            GreenProperty = DependencyProperty.Register("Green", typeof(byte), typeof(ColorPicker),
                 new FrameworkPropertyMetadata(new PropertyChangedCallback(OnColorRGBChanged)));
-            RedProperty = DependencyProperty.Register("Blue", typeof(byte), typeof(ColorPicker),
+            BlueProperty = DependencyProperty.Register("Blue", typeof(byte), typeof(ColorPicker),
                 new FrameworkPropertyMetadata(new PropertyChangedCallback(OnColorRGBChanged)));
         }
 
         private static void OnColorChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
+            //Color oldColor = (Color)e.OldValue;
             Color newColor = (Color)e.NewValue;
             ColorPicker colorPicker = (ColorPicker)sender;
             colorPicker.Red = newColor.R;
@@ -82,24 +83,20 @@ namespace ITMO_BIM_m1_2_lab17
 
         public static readonly RoutedEvent ColorChangedEvent;
 
-        //ColorChangedEvent = EventManager.RegisterRoutedEvent("ColorChanged",RoutingStrategy.Bubble, typeof(RoutedPropertyChangedEventHandler<Color>), typeof(ColorPicker));
-
         public event RoutedPropertyChangedEventHandler<Color> ColorChanged
         {
             add { AddHandler(ColorChangedEvent, value); }
             remove { RemoveHandler(ColorChangedEvent, value); }
         }
 
-        //private void colorPicker_ColorChanged(object sender, RoutedPropertyChangedEventArgs e)
-        //{
-        //    txb.Text = e.NewValue.ToString;
-        //}
+        private void colorPicker_ColorChanged(object sender, RoutedPropertyChangedEventArgs<Color> e)
+        {
+            txb.Text = e.NewValue.ToString();
+        }
 
         public ColorPicker()
-
         {
         InitializeComponent();
-
         }
     }
 }

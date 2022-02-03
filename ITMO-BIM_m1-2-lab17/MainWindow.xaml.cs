@@ -24,6 +24,13 @@ namespace ITMO_BIM_m1_2_lab17
         public MainWindow()
         {
             InitializeComponent();
+
+            //ColorChangedEvent = EventManager.RegisterRoutedEvent("ColorChanged", RoutingStrategy.Bubble, typeof(RoutedPropertyChangedEventHandler<Color>), typeof(ColorPicker));
+            
+            //RoutedPropertyChangedEventArgs<Color> args = new RoutedPropertyChangedEventArgs<Color>(oldColor, newColor);
+            //args.RoutedEvent = ColorChangedEvent;
+            //colorPicker.RaiseEvent(args);
+
         }
     }
 }

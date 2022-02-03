@@ -4,25 +4,36 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ITMO_BIM_m1_2_lab17"
-             xmlns:lib="clr-namespace:ITMO_BIM_m1_2_lab17;assembly=ColorPicker"
-             mc:Ignorable="d" 
-             d:DesignHeight="56" d:DesignWidth="300">
-    <Grid>    
-        
+             mc:Ignorable="d"
+             d:DesignHeight="100" d:DesignWidth="200"
+             Name="colorPicker">
+    <Grid>       
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <Slider x:Name="sliderRed" Grid.Row="0" Minimum="0" Maximum="255" Margin="1" Value="{Binding ElementName=colorPicker, Path=Red}"/>
-        <Slider x:Name="sliderGreen" Grid.Row="1"  Minimum="0" Maximum="255" Margin="1" Value="{Binding ElementName=colorPicker, Path=Green}"/>
-        <Slider x:Name="sliderBlue" Grid.Row="2" Minimum="0" Maximum="255" Margin="1" Value="{Binding ElementName=colorPicker, Path=Blue}"/>
-        <Rectangle Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Width="50" Stroke="Black" StrokeThickness="1" StrokeDashArray="2 1"
-                   Fill="{Binding ElementName=colorPicker, Path=Color}"/>
-        <!--<lib:ColorPicker Name="colorPicker" ColorChanged="colorPicker_ColorChanged"/>-->
+        <Label Content="_R" Grid.Row="0" Target="sliderRed"/>
+        <Slider x:Name="sliderRed" Grid.Row="0" Grid.Column="1" Minimum="0" Maximum="255" SmallChange="1" LargeChange="16" Margin="2"
+                Background="Red" Opacity=".2" Value="{Binding ElementName=colorPicker, Path=Red}"/>
+        <Label Content="_G" Grid.Row="1" Target="sliderGreen"/>
+        <Slider x:Name="sliderGreen" Grid.Row="1" Grid.Column="1" Minimum="0" Maximum="255" SmallChange="1" LargeChange="16" Margin="2" 
+                Background="Green" Opacity=".2" Value="{Binding ElementName=colorPicker, Path=Green}"/>
+        <Label Content="_B" Grid.Row="2" Target="sliderBlue"/>
+        <Slider x:Name="sliderBlue" Grid.Row="2" Grid.Column="1" Minimum="0" Maximum="255" SmallChange="1" LargeChange="16" Margin="2" 
+                Background="Blue" Opacity=".2" Value="{Binding ElementName=colorPicker, Path=Blue}"/>
+        <Rectangle Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" Width="50" Stroke="Black" StrokeThickness="1" StrokeDashArray="2 1">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="{Binding ElementName=colorPicker, Path=Color}"/>
+            </Rectangle.Fill>
+        </Rectangle>    
+        <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" Text="HEX-код выбранного цвета "/>
+        <TextBox x:Name="txb" Grid.Row="3" Grid.Column="2" Text="{Binding ElementName=colorPicker, Path=Color}" IsReadOnly="True"/>
     </Grid>
 </UserControl>

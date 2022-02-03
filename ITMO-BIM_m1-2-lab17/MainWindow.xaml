@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ITMO_BIM_m1_2_lab17"
         mc:Ignorable="d"
-        Title="MainWindow" Height="150" Width="300">
-    <Grid>
-        <local:ColorPicker HorizontalAlignment="Center" VerticalAlignment="Center" Width="150"/>
+        Title="Спектрофотометр ver.0.1" Height="160" Width="500" MinHeight="160" MinWidth="260">
+    <Grid>        
+        <local:ColorPicker HorizontalAlignment="Stretch" VerticalAlignment="Center"  Margin="10" Color="White"/>
     </Grid>
 </Window>
